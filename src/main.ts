@@ -1,6 +1,5 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from "path";
-// import './index.html';
 
 let mainWindow: (Electron.BrowserWindow | undefined);
 const createWindow = function () {
@@ -20,16 +19,18 @@ const createWindow = function () {
     });
 };
 
-app.whenReady().then(createWindow);
+if (app !== undefined) {
+    app.whenReady().then(createWindow);
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
-});
+    app.on('window-all-closed', () => {
+        if (process.platform !== 'darwin') {
+            app.quit();
+        }
+    });
 
-app.on('activate', () => {
-    if (mainWindow === undefined) {
-        createWindow();
-    }
-});
+    app.on('activate', () => {
+        if (mainWindow === undefined) {
+            createWindow();
+        }
+    });
+}

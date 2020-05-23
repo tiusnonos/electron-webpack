@@ -1,6 +1,8 @@
 import * as fs from 'fs';
+import '@styles/renderer.scss';
 
 document.body.addEventListener('click', () => {
+    console.log('test');
     // tslint:disable-next-line: no-console
     console.log(getDirectoryFiles('D:/'));
 });
